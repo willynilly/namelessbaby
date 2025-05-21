@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: namelessbaby
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Will
+    family-names: Riley
+    email: wanderingwill@gmail.com
+    orcid: "https://orcid.org/0000-0003-1822-6756"
+repository-code: >-
+  https://github.com/willynilly/namelessbaby
+abstract: >-
+  A library to help you name your baby.
+keywords:
+  - baby
+  - names
+  - generator
+license: Apache-2.0
+version: "1.0.0"
+date-released: "2025-05-21"

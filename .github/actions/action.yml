@@ -1,0 +1,89 @@
+
+name: Update CFF Authors from Pull Request Contributions
+description: Add GitHub and raw commit authors to the authors section of CITATION.cff
+
+inputs:
+  base_branch:
+    description: The base branch to compare against (target of PR)
+    required: true
+    type: string
+  head_branch:
+    description: The head branch (source of PR)
+    required: true
+    type: string
+  cff_path:
+    description: Path to the CFF file (default is CITATION.cff)
+    required: false
+    type: string
+    default: CITATION.cff
+  post_comment:
+    description: Whether to post a pull request comment (true/false)
+    required: false
+    type: boolean
+    default: true
+  include_coauthors:
+    description: Include co-authors from commit messages
+    required: false
+    type: boolean
+    default: true
+  authorship_for_pr_commits:
+    description: Include PR commit authors and co-authors as authors
+    required: false
+    type: boolean
+    default: true
+  authorship_for_pr_reviews:
+    description: Include PR reviewers as authors
+    required: false
+    type: boolean
+    default: true
+  authorship_for_pr_issues:
+    description: Include creators of issues linked to the PR as authors
+    required: false
+    type: boolean
+    default: true
+  authorship_for_pr_issue_comments:
+    description: Include commenters on linked issues as authors
+    required: false
+    type: boolean
+    default: true
+  authorship_for_pr_comment:
+    description: Include users who comment directly on the PR
+    required: false
+    type: boolean
+    default: true
+
+outputs:
+  new_users:
+    description: Comma-separated list of new author identifiers
+  updated_cff:
+    description: Full updated CFF content
+  warnings:
+    description: Contributors skipped or added without metadata
+  orcid_logs:
+    description: ORCID match attempt logs
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+
+    - run: pip install requests pyyaml
+
+    - id: update_cff_authors
+      run: python .github/actions/update-cff-authors/update_cff_authors.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPO: ${{ github.repository }}
+        BASE_BRANCH: ${{ inputs.base_branch }}
+        HEAD_BRANCH: ${{ inputs.head_branch }}
+        CFF_PATH: ${{ inputs.cff_path }}
+        POST_COMMENT: ${{ inputs.post_comment }}
+        INCLUDE_COAUTHORS: ${{ inputs.include_coauthors }}
+        AUTHORSHIP_FOR_PR_COMMITS: ${{ inputs.authorship_for_pr_commits }}
+        AUTHORSHIP_FOR_PR_REVIEWS: ${{ inputs.authorship_for_pr_reviews }}
+        AUTHORSHIP_FOR_PR_ISSUES: ${{ inputs.authorship_for_pr_issues }}
+        AUTHORSHIP_FOR_PR_ISSUE_COMMENTS: ${{ inputs.authorship_for_pr_issue_comments }}
+        AUTHORSHIP_FOR_PR_COMMENT: ${{ inputs.authorship_for_pr_comment }}
+        GITHUB_EVENT_PATH: ${{ github.event_path }}

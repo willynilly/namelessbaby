@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "namelessbaby"
+version = "1.0.0"
+description = "A library to help you name your baby."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+license-files = ["LICEN[CS]E*"]
+keywords = ["baby", "names", "generator"]
+authors = [
+  { name = "Will Riley", email = "wanderingwill@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Utilities"
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/willynilly/namelessbaby"
+Documentation = "https://github.com/willynilly/namelessbaby#readme"
+Issues = "https://github.com/willynilly/namelessbaby/issues"
+Source = "https://github.com/willynilly/namelessbaby"
+
+[project.optional-dependencies]
+testing = [
+    "pytest>=8.3.5",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
+
+[tool.hatch.build.targets.sdist.force-include]
+"CITATION.cff" = "src/namelessbaby/CITATION.cff"

@@ -1,0 +1,31 @@
+name: Contributor Check on PR
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  contributor-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Run update-cff-authors
+        uses: ./.github/actions/update-cff-authors
+        with:
+          base_branch: main
+          head_branch: ${{ github.head_ref }}
+          cff_path: CITATION.cff
+          post_comment: true
+          include_coauthors: true
+          authorship_for_pr_commits: true
+          authorship_for_pr_reviews: true
+          authorship_for_pr_issues: true
+          authorship_for_pr_issue_comments: true
+          authorship_for_pr_comment: true
