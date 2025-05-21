@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run update-cff-authors
-        uses: willynilly/update-cff-authors@v1.0.0
+        uses: willynilly/update-cff-authors@main
         with:
           base_branch: main
           head_branch: ${{ github.head_ref }}
