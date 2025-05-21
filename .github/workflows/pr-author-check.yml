@@ -19,6 +19,7 @@ jobs:
       - name: Run update-cff-authors
         uses: willynilly/action-update-cff-authors@v1.0.0
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           base_branch: main
           head_branch: ${{ github.head_ref }}
           cff_path: CITATION.cff
