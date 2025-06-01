@@ -20,9 +20,15 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           fetch-depth: 0
+      
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ">=3.13.3" # required for cff-author-updater
+          cache: 'pip' # optional for cff-author-updater
 
       - name: Run cff-author-updater
-        uses: willynilly/cff-author-updater@add-models
+        uses: willynilly/cff-author-updater@v2.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           base_branch: main
@@ -33,6 +39,8 @@ jobs:
           authorship_for_pr_reviews: true
           authorship_for_pr_issues: true
           authorship_for_pr_issue_comments: true
-          authorship_for_pr_comment: true
+          authorship_for_pr_comments: true
           missing_author_invalidates_pr: true
+          duplicate_author_invalidates_pr: true
+          invalid_cff_invalidates_pr: true
           bot_blacklist: github-actions[bot]
