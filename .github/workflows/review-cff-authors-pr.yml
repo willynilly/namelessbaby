@@ -28,7 +28,7 @@ jobs:
           cache: 'pip' # optional for cff-author-updater
 
       - name: Run cff-author-updater
-        uses: willynilly/cff-author-updater@v2.0.0
+        uses: willynilly/cff-author-updater@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           base_branch: main
