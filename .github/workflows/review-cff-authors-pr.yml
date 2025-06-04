@@ -28,7 +28,7 @@ jobs:
           cache: 'pip' # optional for cff-author-updater
 
       - name: Run cff-author-updater
-        uses: willynilly/cff-author-updater@add-models
+        uses: willynilly/cff-author-updater@develop
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           base_branch: main
@@ -43,4 +43,5 @@ jobs:
           missing_author_invalidates_pr: true
           duplicate_author_invalidates_pr: true
           invalid_cff_invalidates_pr: true
+          can_skip_authorship: true
           bot_blacklist: github-actions[bot]
