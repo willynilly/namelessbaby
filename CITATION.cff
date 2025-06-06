@@ -7,9 +7,7 @@ authors:
   family-names: Riley
   email: wanderingwill@gmail.com
   orcid: https://orcid.org/0000-0003-1822-6756
-- given-names: Estelle
-  family-names: Ruby
-  alias: https://github.com/estelle-ruby
+- alias: https://github.com/estelle-ruby
 repository-code: https://github.com/willynilly/namelessbaby
 abstract: A library to help you name your baby.
 keywords:
