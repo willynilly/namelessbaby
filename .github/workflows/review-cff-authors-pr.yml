@@ -27,7 +27,7 @@ jobs:
           cache: 'pip' # optional for cff-author-updater
 
       - name: Run cff-author-updater
-        uses: willynilly/cff-author-updater@develop
+        uses: willynilly/cff-author-updater@v2.3.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           base_branch: main
@@ -36,7 +36,7 @@ jobs:
           post_pr_comment: true
           show_error_messages_in_pr_comment: true
           show_warning_messages_in_pr_comment: true
-          show_info_messages_in_pr_comment: false
+          show_info_messages_in_pr_comment: true
           authorship_for_pr_commits: true
           authorship_for_pr_reviews: true
           authorship_for_pr_issues: true
