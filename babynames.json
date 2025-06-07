@@ -2,12 +2,14 @@
     "boy": {
         "bob": {},
         "ben": {},
-        "bill": {}
+        "bill": {},
+        "will": {}
     },
     "girl": {
         "angie": {},
         "alice": {},
         "ariel": {},
+        "estelle": {},
         "wendy": {}
     }
 }
